@@ -33,4 +33,14 @@ public class Patient {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @OneToOne
+    @JoinColumn(name = "patient_insurance",unique = true)
+    private Insurance insurance;//should be owning side
+
+    /*
+        * Owning side = the entity whose table contains the foreign key. It is responsible for inserting/updating the relationship.
+        * Inverse side (mappedBy) = points to the owning side's field and does not create or manage the foreign key.
+        * Without mappedBy, Hibernate assumes both entities own separate relationships, which results in two foreign keys and an incorrect database model.
+     */
 }
