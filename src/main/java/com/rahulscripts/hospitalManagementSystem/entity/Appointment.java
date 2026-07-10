@@ -17,12 +17,16 @@ public class Appointment {
     @Column(nullable = false)
     private LocalDateTime appointmentTime;
 
+    @Column(length = 500)
     private String reason;
 
     private String status;
 
     @ManyToOne()
-    @JoinColumn()
+    @JoinColumn(nullable = false)
     private Patient patient;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Doctor doctor;
 }
