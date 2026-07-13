@@ -17,7 +17,7 @@ public class Department {
     private String name;
 
     @OneToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable= false)
     private Doctor headDoctor;
 
     @ManyToMany
