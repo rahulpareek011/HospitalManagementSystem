@@ -34,7 +34,7 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "patient_insurance",unique = true)
     private Insurance insurance;//should be owning side
 
