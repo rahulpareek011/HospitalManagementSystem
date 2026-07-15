@@ -1,12 +1,18 @@
 package com.rahulscripts.hospitalManagementSystem.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 public class Appointment {
 
@@ -22,11 +28,15 @@ public class Appointment {
 
     private String status;
 
-    @ManyToOne()
+    @ManyToOne() //owning side
     @JoinColumn(nullable = false)
+    @ToString.Exclude
+    @JsonIgnore
     private Patient patient;
 
     @ManyToOne
     @JoinColumn(nullable = false)
+    @ToString.Exclude
+    @JsonIgnore
     private Doctor doctor;
 }
